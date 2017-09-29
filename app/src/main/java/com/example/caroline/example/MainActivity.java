@@ -16,15 +16,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<ListExamples> songs = new ArrayList<>();
     private ListView songListView;
-    public static final String SONG_KEY = "song name";
+    public static final String SONG_NAME = "song name";
+    public static final String SONG_DESC = "song desc";
     private int songNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         wireWidgets();
-        //get the list of items you want to show wet up
+        //get the list of items you want to show up
         createList();
         //create the adapter that will be the go-between from the list to the listview
         ArrayAdapter<ListExamples> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, songs);
@@ -40,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Intent i = new Intent(MainActivity.this, SongScreen.class);
-        i.putExtra("song name", songs.get(songNum).getDesc() + ": " + songs.get(songNum).getDesc());
+        i.putExtra("song name", songs.get(songNum).getName());
+        i.putExtra("desc", songs.get(songNum).getDesc());
+        //resourceID passed
         startActivity(i);
     }
 
@@ -49,11 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createList(){
-        songs.add(new ListExamples("All I Ask of You", "", 0));
-        songs.add(new ListExamples("Think of Me", "", 0));
-        songs.add(new ListExamples("Memory", "", 0));
-        songs.add(new ListExamples("Corner of the Sky", "", 0));
-        songs.add(new ListExamples("I Whistle a Happy Tune", "", 0));
-
+        songs.add(new ListExamples("All I Ask of You", "No more talk of darkness, forget these wide eyed fears...", 0));
+        songs.add(new ListExamples("Think of Me", "Think of me, think of me fondly when we've said good bye...", 0));
+        songs.add(new ListExamples("Memory", "Midnight, not a sound from the pavement...", 0));
+        songs.add(new ListExamples("Corner of the Sky", "Everything has its season, Everything has its time, Show me a reasonm And I'll soon show you a rhyme...", 0));
+        songs.add(new ListExamples("I Whistle a Happy Tune", "Whenever I feel afraid, I hold my head erect, And whistle a happy tune so no one will suspect I'm afraid...", 0));
     }
 }

@@ -4,6 +4,7 @@
     android:textSize="20sp"
     android:textColor="@color/colorPrimary"
     android:text="Hi this is text"
+
     >
 
 </TextView>

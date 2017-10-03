@@ -43,7 +43,7 @@ public class ListExamples {
 
     @Override
     public String toString() {
-        return "" + name + ": " + desc;
+        return "" + name;
         //return super.toString();
     }
 }

@@ -9,11 +9,14 @@ public class ListExamples {
     //part of the model layer because it knows nothing about Android
     private String name;
     private String desc;
+    private int ranking;
+
     private int imageResourceId;
 
-    public ListExamples(String name, String desc, int imageResourceId){
+    public ListExamples(String name, String desc, int ranking, int imageResourceId){
         this.name = name;
         this.desc = desc;
+        this.ranking = ranking;
         this.imageResourceId = imageResourceId;
     }
 
@@ -39,6 +42,14 @@ public class ListExamples {
 
     public void setImageSResourceId(int imageSResourceId) {
         this.imageResourceId = imageSResourceId;
+    }
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
     }
 
     @Override

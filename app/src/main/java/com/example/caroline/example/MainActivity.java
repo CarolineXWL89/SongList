@@ -4,20 +4,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<ListExamples> songs = new ArrayList<>();
     private ListView songListView;
     public static final String SONG_NAME = "song name";
     public static final String SONG_DESC = "song desc";
+    public static final String SONG_PIC = "picture";
     private int songNum;
 
     @Override
@@ -40,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent i = new Intent(MainActivity.this, SongScreen.class);
                     i.putExtra("song name", songs.get(songNum).getName());
                     i.putExtra("desc", songs.get(songNum).getDesc());
+                    i.putExtra("picture", songs.get(songNum).getImageSResourceId());
+
                     //resourceID passed
                     startActivity(i);
                 //}
@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createList(){
-        songs.add(new ListExamples("All I Ask of You", "No more talk of darkness, forget these wide eyed fears...", R.drawable.AllIAskofYou));
-        songs.add(new ListExamples("Think of Me", "Think of me, think of me fondly when we've said good bye...", R.drawable.ThinkofMe));
-        songs.add(new ListExamples("Memory", "Midnight, not a sound from the pavement...", R.drawable.Memory));
-        songs.add(new ListExamples("Corner of the Sky", "Everything has its season, Everything has its time, Show me a reason And I'll soon show you a rhyme...", R.drawable.CorneroftheSky));
-        songs.add(new ListExamples("I Whistle a Happy Tune", "Whenever I feel afraid, I hold my head erect, And whistle a happy tune so no one will suspect I'm afraid...", R.drawable.IWhistleAHappyTune));
+        songs.add(new ListExamples("All I Ask of You", "No more talk of darkness, forget these wide eyed fears...", 5, R.drawable.alliaskofyou));
+        songs.add(new ListExamples("Think of Me", "Think of me, think of me fondly when we've said good bye...", 2, R.drawable.thinkofme));
+        songs.add(new ListExamples("memory", "Midnight, not a sound from the pavement...", 3, R.drawable.memory));
+        songs.add(new ListExamples("Corner of the Sky", "Everything has its season, Everything has its time, Show me a reason And I'll soon show you a rhyme...", 1, R.drawable.cornerofthesky));
+        songs.add(new ListExamples("I Whistle a Happy Tune", "Whenever I feel afraid, I hold my head erect, And whistle a happy tune so no one will suspect I'm afraid...", 4, R.drawable.iwhistleahappytune));
     }
 }

@@ -3,6 +3,8 @@ package com.example.caroline.example;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SONG_DESC = "song desc";
     public static final String SONG_PIC = "picture";
     private int songNum;
+    //private ContextMenu contextMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, songs.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        songListView.setOnCreateContextMenuListener(new ListView.OnCreateContextMenuListener(){
+            @Override
+            public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+                songListView.onCreateContextMenu(); //need to figure out what is wrong
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.deletingmenu, contextMenu);
+            }
+        });
     }
 
     private void wireWidgets(){
@@ -59,5 +70,9 @@ public class MainActivity extends AppCompatActivity {
         songs.add(new ListExamples("memory", "Midnight, not a sound from the pavement...", 3, R.drawable.memory));
         songs.add(new ListExamples("Corner of the Sky", "Everything has its season, Everything has its time, Show me a reason And I'll soon show you a rhyme...", 1, R.drawable.cornerofthesky));
         songs.add(new ListExamples("I Whistle a Happy Tune", "Whenever I feel afraid, I hold my head erect, And whistle a happy tune so no one will suspect I'm afraid...", 4, R.drawable.iwhistleahappytune));
+    }
+
+    private void registerForContextMenu(ListView listView){
+        //
     }
 }

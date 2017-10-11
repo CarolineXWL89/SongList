@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity implements Parcelable, Compa
         registerForContextMenu(songListView);
     }
 
-    private void wireWidgets(){
+    private void wireWidgets() {
         songListView = (ListView) findViewById(R.id.listview_song);
     }
 
-    private void createList(){
+    private void createList() {
         songs.add(new ListExamples("All I Ask of You", "No more talk of darkness, forget these wide eyed fears...", 5, R.drawable.alliaskofyou));
         songs.add(new ListExamples("Think of Me", "Think of me, think of me fondly when we've said good bye...", 2, R.drawable.thinkofme));
         songs.add(new ListExamples("memory", "Midnight, not a sound from the pavement...", 3, R.drawable.memory));
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements Parcelable, Compa
         songs.add(new ListExamples("I Whistle a Happy Tune", "Whenever I feel afraid, I hold my head erect, And whistle a happy tune so no one will suspect I'm afraid...", 4, R.drawable.iwhistleahappytune));
     }
 
-    private void registerForContextMenu(final ListView listView){
-        songListView.setOnCreateContextMenuListener(new ListView.OnCreateContextMenuListener(){
+    private void registerForContextMenu(final ListView listView) {
+        songListView.setOnCreateContextMenuListener(new ListView.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
                 onCreateContextMenu(contextMenu, listView, contextMenuInfo); //need to figure out what is wrong
@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements Parcelable, Compa
         public MainActivity[] newArray(int size) {
             return new MainActivity[size];
         }
+
+
     };
 
     @Override

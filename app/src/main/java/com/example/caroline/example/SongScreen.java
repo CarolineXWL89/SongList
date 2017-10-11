@@ -16,15 +16,18 @@ public class SongScreen extends AppCompatActivity {
     private String name, desc;
     private int pic;
 
+    private ListExamples song;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_screen);
 
         Intent i = getIntent();
-        name = i.getStringExtra(MainActivity.SONG_NAME);
+        /*name = i.getStringExtra(MainActivity.SONG_NAME);
         desc = i.getStringExtra(MainActivity.SONG_DESC);
-        pic = i.getIntExtra(MainActivity.SONG_PIC, 0);
+        pic = i.getIntExtra(MainActivity.SONG_PIC, 0);*/
+        song = i.getParcelableExtra(MainActivity.SONG_OBJ);
         //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 
         wireWidgets();
@@ -39,8 +42,8 @@ public class SongScreen extends AppCompatActivity {
     }
 
     public void setStuff(){
-        songName.setText(name);
-        songDesc.setText(desc);
-        songPic.setImageResource(pic);
+        songName.setText(song.getName());
+        songDesc.setText(song.getDesc());
+        songPic.setImageResource(song.getImageSResourceId());
     }
 }
